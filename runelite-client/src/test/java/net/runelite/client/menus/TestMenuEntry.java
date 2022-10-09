@@ -235,4 +235,39 @@ public class TestMenuEntry implements MenuEntry
 	{
 		return actor;
 	}
+
+	@Override
+	public int getOpcode() {
+		return 0;
+	}
+
+	@Override
+	public void setOpcode(int opcode) {
+
+	}
+
+	@Override
+	public int getActionParam0() {
+		return 0;
+	}
+
+	@Override
+	public void setActionParam0(int param0) {
+
+	}
+
+	@Override
+	public int getActionParam1() {
+		return 0;
+	}
+
+	@Override
+	public void setActionParam1(int param0) {
+
+	}
+
+	@Override
+	public MenuAction getMenuAction() {
+		return null;
+	}
 }

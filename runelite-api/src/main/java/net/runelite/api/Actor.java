@@ -37,7 +37,7 @@ import net.runelite.api.coords.WorldPoint;
 /**
  * Represents a RuneScape actor/entity.
  */
-public interface Actor extends Renderable
+public interface Actor extends Renderable, Locatable
 {
 	/**
 	 * Gets the combat level of the actor.
@@ -65,8 +65,11 @@ public interface Actor extends Renderable
 	 * </ul>
 	 *
 	 * @return the actor, null if no interaction is occurring
+	 *
+	 * (getRSInteracting returns the npc/player index, useful for menus)
 	 */
 	Actor getInteracting();
+	int getRSInteracting();
 
 	/**
 	 * Gets the health of the actor in {@link #getHealthScale()} units.
@@ -102,6 +105,16 @@ public interface Actor extends Renderable
 	 * @return the client location
 	 */
 	LocalPoint getLocalLocation();
+
+	/**
+	 * Get the index of the PoseFrame (the index as it appears in the sequenceDefinition "frames" array).
+	 */
+	int getPoseFrame();
+
+	/**
+	 * Get the number of cycles the pose frame has been displayed for.
+	 */
+	int getPoseFrameCycle();
 
 	/**
 	 * Gets the target orientation of the actor.
@@ -398,6 +411,12 @@ public interface Actor extends Renderable
 	void setOverheadText(String overheadText);
 
 	/**
+	 * Used by the "Tick Counter Plugin
+	 */
+	int getActionFrame();
+	int getActionFrameCycle();
+
+	/**
 	 * Get the number of cycles/client ticks remaining before the overhead text is timed out
 	 *
 	 * @return
@@ -425,4 +444,6 @@ public interface Actor extends Renderable
 	 * @see #isDead()
 	 */
 	void setDead(boolean dead);
+
+	boolean isMoving();
 }

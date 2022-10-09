@@ -42,11 +42,14 @@ public interface Player extends Actor
 	@Override
 	int getCombatLevel();
 
+	int getPlayerId();
+
 	/**
 	 * Gets the composition of this player.
 	 *
 	 * @return the composition
 	 */
+	@Nullable
 	PlayerComposition getPlayerComposition();
 
 	/**
@@ -90,14 +93,22 @@ public interface Player extends Actor
 	 *
 	 * @return the overhead icon
 	 */
+	@Nullable
 	HeadIcon getOverheadIcon();
 
 	/**
 	 * Gets the displayed skull icon of the player.
-	 * Only works on the local player.
 	 *
 	 * @return the skull icon
 	 */
 	@Nullable
 	SkullIcon getSkullIcon();
+
+	/**
+	 * This is almost always not what you want
+	 * @return literal 0
+	 */
+	int getRSSkillLevel();
+
+	String[] getActions();
 }

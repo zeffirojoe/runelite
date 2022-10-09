@@ -69,7 +69,7 @@ public interface GameObject extends TileObject
 	 * Gets the convex hull of the object's model.
 	 *
 	 * @return the convex hull
-	 * @see net.runelite.api.model.Jarvis
+	 * @see //net.runelite.api.model.Jarvis
 	 */
 	Shape getConvexHull();
 

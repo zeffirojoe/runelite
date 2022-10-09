@@ -29,6 +29,7 @@ import java.util.Collection;
 import javax.annotation.Nullable;
 import net.runelite.api.FontTypeFace;
 import net.runelite.api.Point;
+import net.runelite.api.SpritePixels;
 import org.intellij.lang.annotations.MagicConstant;
 import org.jetbrains.annotations.Range;
 
@@ -189,6 +190,9 @@ public interface Widget
 	 * @param y y pos relative to the parent
 	 */
 	void setForcedPosition(int x, int y);
+
+	void setForcedX();
+	void setForcedY();
 
 	/**
 	 * Gets the text displayed on this widget.
@@ -1070,4 +1074,72 @@ public interface Widget
 	 * @param args A ScriptID, then the args for the script
 	 */
 	void setOnVarTransmitListener(Object ...args);
+
+	//////////////////////////////////// OPRS
+
+	int getButtonType();
+
+	boolean isWidgetItemDragged(int index);
+
+	Point getWidgetItemDragOffsets();
+
+	String getSpellName();
+
+	/**
+	 * You probably want {@link Widget#getText()} instead
+	 */
+	String getRSButtonText();
+
+	/**
+	 * You probably want {@link Widget#getText()} instead
+	 */
+	String getButtonText();
+
+	/**
+	 * Gets the internal field returned by getName unfiltered
+	 * @return the unfiltered name
+	 */
+	String getRSName();
+
+	String[] getItemActions();
+
+	/**
+	 * Changes the parent ID for the widget
+	 */
+	void setParentId(int id);
+
+	/**
+	 * Changes the ID of the widget
+	 */
+	void setId(int id);
+
+	/**
+	 * Sets the index of this element
+	 */
+	void setIndex(int index);
+
+	/**
+	 * Seems like this needs to set to true when creating new widgets
+	 */
+	void setIsIf3(boolean isIf3);
+
+	/**
+	 * Returns yes if your mouse pointer is over this widget or any of it's children.
+	 */
+	boolean containsMouse();
+
+	/**
+	 * Gets the image which is (or should be) drawn on this widget
+	 */
+	SpritePixels getSprite();
+
+	/**
+	 * Sets the X padding between widgets, mainly for inventory items
+	 */
+	void setPaddingX(int val);
+
+	/**
+	 * Sets the Y padding between widgets, mainly for inventory items
+	 */
+	void setPaddingY(int val);
 }

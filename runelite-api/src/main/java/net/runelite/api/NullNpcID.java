@@ -388,7 +388,6 @@ public final class NullNpcID
 	public static final int NULL_5516 = 5516;
 	public static final int NULL_5530 = 5530;
 	public static final int NULL_5664 = 5664;
-	public static final int NULL_5721 = 5721;
 	public static final int NULL_5733 = 5733;
 	public static final int NULL_5849 = 5849;
 	public static final int NULL_5850 = 5850;
@@ -1704,15 +1703,6 @@ public final class NullNpcID
 	public static final int NULL_10863 = 10863;
 	public static final int NULL_10866 = 10866;
 	public static final int NULL_10869 = 10869;
-	public static final int NULL_10878 = 10878;
-	public static final int NULL_10879 = 10879;
-	public static final int NULL_10880 = 10880;
-	public static final int NULL_10881 = 10881;
-	public static final int NULL_10882 = 10882;
-	public static final int NULL_10883 = 10883;
-	public static final int NULL_10884 = 10884;
-	public static final int NULL_10885 = 10885;
-	public static final int NULL_10886 = 10886;
 	public static final int NULL_10930 = 10930;
 	public static final int NULL_10990 = 10990;
 	public static final int NULL_11108 = 11108;

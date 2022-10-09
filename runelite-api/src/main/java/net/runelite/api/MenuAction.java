@@ -300,6 +300,12 @@ public enum MenuAction
 	 */
 	RUNELITE_SUBMENU(1505),
 
+	FOLLOW(2046),
+	/**
+	 * Menu action triggered by sending a trade offer to a player.
+	 */
+	TRADE(2047),
+
 	/**
 	 * Menu action triggered when the id is not defined in this class.
 	 */

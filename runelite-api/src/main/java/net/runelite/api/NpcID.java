@@ -4012,7 +4012,7 @@ public final class NpcID
 	public static final int JAIL_GUARD_4279 = 4279;
 	public static final int NED = 4280;
 	public static final int AGGIE = 4284;
-	public static final int CHANCELLOR_HASSAN = 4285;
+	public static final int HASSAN = 4285;
 	public static final int OSMAN_4286 = 4286;
 	public static final int BORDER_GUARD = 4287;
 	public static final int BORDER_GUARD_4288 = 4288;
@@ -5331,6 +5331,7 @@ public final class NpcID
 	public static final int UNDEAD_LUMBERJACK_5718 = 5718;
 	public static final int UNDEAD_LUMBERJACK_5719 = 5719;
 	public static final int UNDEAD_LUMBERJACK_5720 = 5720;
+	public static final int LANTHUS = 5721;
 	public static final int BARRICADE = 5722;
 	public static final int BARRICADE_5723 = 5723;
 	public static final int BARRICADE_5724 = 5724;
@@ -9157,6 +9158,15 @@ public final class NpcID
 	public static final int MYSTERIOUS_STRANGER_10875 = 10875;
 	public static final int MYSTERIOUS_STRANGER_10876 = 10876;
 	public static final int MYSTERIOUS_STRANGER_10877 = 10877;
+	public static final int LESSER_GHOSTLY_THRALL = 10878;
+	public static final int SUPERIOR_GHOSTLY_THRALL = 10879;
+	public static final int GREATER_GHOSTLY_THRALL = 10880;
+	public static final int LESSER_SKELETAL_THRALL = 10881;
+	public static final int SUPERIOR_SKELETAL_THRALL = 10882;
+	public static final int GREATER_SKELETAL_THRALL = 10883;
+	public static final int LESSER_ZOMBIFIED_THRALL = 10884;
+	public static final int SUPERIOR_ZOMBIFIED_THRALL = 10885;
+	public static final int GREATER_ZOMBIFIED_THRALL = 10886;
 	public static final int TOWN_CRIER_10887 = 10887;
 	public static final int BAT_10888 = 10888;
 	public static final int ASTEROS_ARCEUUS = 10889;

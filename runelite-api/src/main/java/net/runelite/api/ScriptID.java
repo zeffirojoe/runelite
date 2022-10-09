@@ -94,6 +94,16 @@ public final class ScriptID
 	public static final int MESSAGE_LAYER_CLOSE = 299;
 
 	/**
+	 * Sets the background for sound option bars
+	 * <ul>
+	 * <li> int  Value of the slider (0-4) </li>
+	 * <li> int (WidgetID) * 5, segments of the slider </li>
+	 * </ul>
+	 */
+	@ScriptArguments(integer = 6)
+	public static final int OPTIONS_ALLSOUNDS = 358;
+
+	/**
 	 * Readies the chatbox panel for things like the chatbox input
 	 * Inverse of MESSAGE_LAYER_CLOSE
 	 * <ul>
@@ -102,6 +112,12 @@ public final class ScriptID
 	 */
 	@ScriptArguments(integer = 1)
 	public static final int MESSAGE_LAYER_OPEN = 677;
+
+	/**
+	 * Clicking bank pin buttons runs this
+	 */
+	@ScriptArguments(integer = 20)
+	public static final int BANK_PIN_OP = 685;
 
 	/**
 	 * Builds the chatbox input widget
@@ -122,6 +138,16 @@ public final class ScriptID
 	 */
 	@ScriptArguments(integer = 4)
 	public static final int WATSON_STASH_UNIT_CHECK = 1479;
+	/**
+	 * Displays the game messages when clicking on an item inside the Items Kept on Death interface
+	 * <ul>
+	 * <li> int (boolean) Item kept on death </li>
+	 * <li> int Item Quantity </li>
+	 * <li> String Item Name </li>
+	 * </ul>
+	 */
+	@ScriptArguments(integer = 2, string = 1)
+	public static final int DEATH_KEEP_ITEM_EXAMINE = 1603;
 
 	/**
 	 * Queries the completion state of a quest by its struct id
@@ -169,6 +195,12 @@ public final class ScriptID
 	public static final int CAMERA_DO_ZOOM = 42;
 
 	/**
+	 * Rebuilds the Spellbook
+	 */
+	@ScriptArguments(integer = 10, string = 2)
+	public static final int MAGIC_SPELLBOOK_REDRAW = 2611;
+
+	/**
 	 * Does nothing
 	 *
 	 * This is used to eat events when you want a menu action attached to it
@@ -195,6 +227,18 @@ public final class ScriptID
 	public static final int XPDROP_DISABLED = 2091;
 
 	/**
+	 * Join a clan, duh
+	 */
+	@ScriptArguments(string = 1)
+	public static final int CUSTOM_JOIN_CLAN = 10690;
+
+	/**
+	 * Send a public message
+	 */
+	@ScriptArguments(string = 1)
+	public static final int PUBLICMSG = 13337;
+
+	/**
 	 * Attempts to kick the specified player from the friends chat
 	 * <ul>
 	 * <li>String Players in-game name</li>
@@ -202,6 +246,20 @@ public final class ScriptID
 	 */
 	@ScriptArguments(string = 1)
 	public static final int FRIENDS_CHAT_SEND_KICK = 3764;
+
+	/**
+	 * Toggles the bank search
+	 *
+	 * <ul>
+	 * <li>int 1 (must be 1 or script immediately returns)</li>
+	 * </ul>
+	 *
+	 * Also takes 17 widget IDs corresponding to various bank widgets.
+	 * These can be retrieved from the getOnInvTransmit of BANK_ITEM_CONTAINER. Note that this array also
+	 * contains the script ID for the bank layout script in the first index
+	 */
+	@ScriptArguments(integer = 18)
+	public static final int BANKMAIN_SEARCH_TOGGLE = 281;
 
 	/**
 	 * Builds the widget that holds all of the players inside a friends chat
@@ -315,20 +373,6 @@ public final class ScriptID
 
 	@ScriptArguments()
 	public static final int BANKMAIN_SEARCHING = 514;
-
-	/**
-	 * Toggles the bank search
-	 *
-	 * <ul>
-	 * <li>int 1 (must be 1 or script immediately returns)</li>
-	 * </ul>
-	 *
-	 * Also takes 17 widget IDs corresponding to various bank widgets.
-	 * These can be retrieved from the onInvTransmitListener of BANK_ITEM_CONTAINER. Note that this array also
-	 * contains the script ID for the bank layout script in the first index
-	 */
-	@ScriptArguments(integer = 18)
-	public static final int BANKMAIN_SEARCH_TOGGLE = 281;
 
 	/**
 	 * Chooses the click handler for a {@link ParamID#SETTING_SLIDER_CUSTOM_ONOP} = 1 settings slider

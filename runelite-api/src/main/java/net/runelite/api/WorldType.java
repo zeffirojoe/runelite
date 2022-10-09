@@ -94,6 +94,32 @@ public enum WorldType
 		PVP
 	);
 
+	private static final EnumSet<WorldType> DEADMAN_WORLD_TYPES = EnumSet.of(
+		DEADMAN
+	);
+
+	private static final EnumSet<WorldType> HIGHRISK_WORLD_TYPES = EnumSet.of(
+		HIGH_RISK
+	);
+
+	private static final EnumSet<WorldType> ALL_HIGHRISK_WORLD_TYPES = EnumSet.of(
+		HIGH_RISK,
+		DEADMAN
+	);
+
+	private static final EnumSet<WorldType> ALL_PVP_WORLD_TYPES = EnumSet.of(
+		HIGH_RISK,
+		DEADMAN,
+		PVP
+	);
+
+	private static final EnumSet<WorldType> ALL_PK_WORLD_TYPES = EnumSet.of(
+		HIGH_RISK,
+		DEADMAN,
+		PVP,
+		BOUNTY
+	);
+
 	/**
 	 * Create enum set of world types from mask.
 	 *
@@ -143,5 +169,30 @@ public enum WorldType
 	public static boolean isPvpWorld(final Collection<WorldType> worldTypes)
 	{
 		return worldTypes.stream().anyMatch(PVP_WORLD_TYPES::contains);
+	}
+
+	public static boolean isDeadmanWorld(final Collection<WorldType> worldTypes)
+	{
+		return worldTypes.stream().anyMatch(DEADMAN_WORLD_TYPES::contains);
+	}
+
+	public static boolean isHighRiskWorld(final Collection<WorldType> worldTypes)
+	{
+		return worldTypes.stream().anyMatch(HIGHRISK_WORLD_TYPES::contains);
+	}
+
+	public static boolean isAllHighRiskWorld(final Collection<WorldType> worldTypes)
+	{
+		return worldTypes.stream().anyMatch(ALL_HIGHRISK_WORLD_TYPES::contains);
+	}
+
+	public static boolean isAllPvpWorld(final Collection<WorldType> worldTypes)
+	{
+		return worldTypes.stream().anyMatch(ALL_PVP_WORLD_TYPES::contains);
+	}
+
+	public static boolean isAllPKWorld(final Collection<WorldType> worldTypes)
+	{
+		return worldTypes.stream().anyMatch(ALL_PK_WORLD_TYPES::contains);
 	}
 }

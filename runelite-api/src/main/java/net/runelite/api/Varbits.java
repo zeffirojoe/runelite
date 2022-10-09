@@ -113,6 +113,10 @@ public final class Varbits
 	public static final int PRAYER_RIGOUR = 5464;
 	public static final int PRAYER_AUGURY = 5465;
 
+	public static final int RIGOUR_UNLOCKED = 5451;
+	public static final int AUGURY_UNLOCKED = 5452;
+	public static final int PRESERVE_UNLOCKED = 5453;
+
 	/**
 	 * Diary Entries
 	 */
@@ -194,6 +198,10 @@ public final class Varbits
 	 * Defensive casting mode
 	 */
 	public static final int DEFENSIVE_CASTING_MODE = 2668;
+	/**
+	 * Spells being auto-casted
+	 */
+	public static final int AUTO_CAST_SPELL = 276;
 
 	/**
 	 * Options
@@ -420,6 +428,19 @@ public final class Varbits
 	public static final int QUEST_THE_HAND_IN_THE_SAND = 1527;
 
 	/**
+	 * 0 = Sir Bedivere
+	 * 1 = Sir Pelleas
+	 * 2 = Sir Tristram
+	 * 3 = Sir Palomedes
+	 * 4 = Sir Lucan
+	 * 5 = Sir Gawain
+	 * 6 = Sir Kay
+	 * 7 = Sir Lancelot
+	 * 8 = Completed (Chivalry and Piety are unlocked)
+	 */
+	public static final int CAMELOT_TRAINING_ROOM_STATUS = 3909;
+
+	/**
 	 * Daily Tasks =Collection availability)
 	 */
 	public static final int DAILY_HERB_BOXES_COLLECTED = 3961;
@@ -576,6 +597,7 @@ public final class Varbits
 	 * 1 = sell
 	 */
 	public static final int GE_OFFER_CREATION_TYPE = 4397;
+	public static final int GE_OFFER_PRICE_PER_ITEM = 4398;
 
 	/**
 	 * The active tab within the quest interface
@@ -628,8 +650,8 @@ public final class Varbits
 	/**
 	 * Whether the Special Attack orb is disabled due to being in a PvP area
 	 * <p>
-	 * 0 = Enabled (player is not in PvP)
-	 * 1 = Disabled (player is in PvP)
+	 * 0 = Enabled =player is not in PvP)
+	 * 1 = Disabled =player in in PvP)
 	 *
 	 * @see <a href="https://oldschool.runescape.wiki/w/Minimap#Special_attack_orb">The OSRS Wiki's Minimap page</a>
 	 */

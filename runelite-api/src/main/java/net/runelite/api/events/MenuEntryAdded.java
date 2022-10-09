@@ -26,81 +26,133 @@ package net.runelite.api.events;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
+import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 
 /**
  * An event when a new entry is added to a right-click menu.
  */
-@RequiredArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(onlyExplicitlyIncluded = true)
 public class MenuEntryAdded
 {
+	// Here for RuneLite compatibility (different parameter order)
+	public MenuEntryAdded(MenuEntry menuEntry)
+	{
+		this.menuEntry = menuEntry;
+
+		this.option = menuEntry.getOption();
+		this.target = menuEntry.getTarget();
+		this.identifier = menuEntry.getIdentifier();
+		this.type = menuEntry.getType().getId();
+		this.actionParam0 = menuEntry.getParam0();
+		this.actionParam1 = menuEntry.getParam1();
+		this.forceLeftClick = false;
+	}
+
 	@Getter
 	private final MenuEntry menuEntry;
 
-	/**
-	 * The option text added to the menu. (ie. "Walk here", "Use")
-	 */
+	@Getter
+	@Setter
 	@EqualsAndHashCode.Include
 	@ToString.Include
-	public String getOption()
-	{
-		return menuEntry.getOption();
-	}
+	private String option;
+
+	@Getter
+	@Setter
+	@EqualsAndHashCode.Include
+	@ToString.Include
+	private String target;
+
+	@Getter
+	@Setter
+	@EqualsAndHashCode.Include
+	@ToString.Include
+	private int type;
+
+	@Getter
+	@Setter
+	@EqualsAndHashCode.Include
+	@ToString.Include
+	private int identifier;
+
+	@Getter
+	@Setter
+	@EqualsAndHashCode.Include
+	@ToString.Include
+	private int actionParam0;
+
+	@Getter
+	@Setter
+	@EqualsAndHashCode.Include
+	@ToString.Include
+	private int actionParam1;
+
+	@Getter
+	@Setter
+	@EqualsAndHashCode.Include
+	@ToString.Include
+	private boolean forceLeftClick;
 
 	/**
-	 * The target of the action. (ie. Item or Actor name)
-	 * <p>
-	 * If the option does not apply to any target, this field
-	 * will be set to empty string.
+	 * If this is set to true client mixin will update
+	 * the menu entry with the modified values.
+	 *
+	 * Checks if count is the same, but doesn't check if there's
+	 * been multiple changes
 	 */
+	@Getter
+	@Setter
 	@EqualsAndHashCode.Include
 	@ToString.Include
-	public String getTarget()
+	private boolean modified;
+
+	public void setModified()
 	{
-		return menuEntry.getTarget();
+		this.modified = true;
 	}
 
-	/**
-	 * The action type that will be triggered.
-	 */
-	@EqualsAndHashCode.Include
-	@ToString.Include
-	public int getType()
+	@Deprecated
+	public int getParam0()
 	{
-		return menuEntry.getType().getId();
+		return actionParam0;
 	}
 
-	/**
-	 * An identifier value for the target of the action
-	 */
-	@EqualsAndHashCode.Include
-	@ToString.Include
-	public int getIdentifier()
+	@Deprecated
+	public void setParam0(int param)
 	{
-		return menuEntry.getIdentifier();
+		actionParam0 = param;
 	}
 
-	/**
-	 * An additional parameter for the action.
-	 */
-	@EqualsAndHashCode.Include
-	@ToString.Include
-	public int getActionParam0()
+	@Deprecated
+	public int getParam1()
 	{
-		return menuEntry.getParam0();
+		return actionParam1;
 	}
 
-	/**
-	 * A second additional parameter for the action.
-	 */
-	@EqualsAndHashCode.Include
-	@ToString.Include
-	public int getActionParam1()
+	@Deprecated
+	public void setParam1(int param)
 	{
-		return menuEntry.getParam1();
+		actionParam1 = param;
+	}
+	@Deprecated
+	public int getOpcode()
+	{
+		return type;
+	}
+
+	@Deprecated
+	public void setOpcode(int opcode)
+	{
+		type = opcode;
+	}
+
+	@Deprecated
+	public MenuAction getMenuAction()
+	{
+		return MenuAction.of(type);
 	}
 }

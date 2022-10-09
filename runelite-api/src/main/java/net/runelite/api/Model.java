@@ -66,6 +66,8 @@ public interface Model extends Mesh, Renderable
 
 	int getXYZMag();
 	boolean isClickable();
+	
+	void drawFace(int face);
 
 	int[] getVertexNormalsX();
 	int[] getVertexNormalsY();

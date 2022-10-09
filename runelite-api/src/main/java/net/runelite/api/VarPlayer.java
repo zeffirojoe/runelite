@@ -39,6 +39,8 @@ import lombok.Getter;
 @Getter
 public enum VarPlayer
 {
+	POUCH_STATUS(261),
+	DUEL_PENDING(286),
 	CANNON_AMMO(3),
 	ATTACK_STYLE(43),
 	QUEST_POINTS(101),
@@ -56,6 +58,11 @@ public enum VarPlayer
 	SPECIAL_ATTACK_ENABLED(301),
 
 	/**
+	 * This has a value of 0 if you have auto retaliate enabled and a value of 1 if you do not
+	 */
+	AUTO_RETALIATE(172),
+
+	/**
 	 * The ID of the party. This Var is only set in the raid bank area and the raid lobby
 	 *
 	 * This gets set to -1 when the raid starts. This is first set when the first player of the friends chat forms a party
@@ -67,6 +74,14 @@ public enum VarPlayer
 	IN_RAID_PARTY(1427),
 
 	NMZ_REWARD_POINTS(1060),
+
+	/**
+	 * The 11 least significant bits of this var correspond to the player
+	 * you're currently fighting. Value is -1 when not fighting any player.
+	 *
+	 * Client.getVar(ATTACKING_PLAYER) & 2047 == Client.getLocalInteractingIndex();
+	 */
+	ATTACKING_PLAYER(1075),
 
 	/**
 	 * -1 : Poison immune

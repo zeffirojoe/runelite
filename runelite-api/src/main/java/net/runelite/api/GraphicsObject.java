@@ -24,7 +24,6 @@
  */
 package net.runelite.api;
 
-import javax.annotation.Nullable;
 import net.runelite.api.coords.LocalPoint;
 
 /**
@@ -77,17 +76,4 @@ public interface GraphicsObject extends Renderable
 	 * @param finished
 	 */
 	void setFinished(boolean finished);
-
-	/**
-	 * The animation of the spotanim
-	 * @return
-	 */
-	@Nullable
-	Animation getAnimation();
-
-	/**
-	 * The frame of the current animation
-	 * @return
-	 */
-	int getAnimationFrame();
 }

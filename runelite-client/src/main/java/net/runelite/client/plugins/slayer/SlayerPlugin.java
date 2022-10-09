@@ -593,7 +593,7 @@ public class SlayerPlugin extends Plugin
 	{
 		Actor actor = hitsplatApplied.getActor();
 		Hitsplat hitsplat = hitsplatApplied.getHitsplat();
-		if (hitsplat.getHitsplatType() == HitsplatID.DAMAGE_ME && targets.contains(actor))
+		if (hitsplat.getHitsplatType() == Hitsplat.HitsplatType.DAMAGE_ME && targets.contains(actor))
 		{
 			// If the actor is in highlightedTargets it must be an NPC and also a task assignment
 			taggedNpcs.add((NPC) actor);

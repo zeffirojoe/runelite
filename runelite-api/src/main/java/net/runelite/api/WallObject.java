@@ -78,4 +78,7 @@ public interface WallObject extends TileObject
 
 	Renderable getRenderable1();
 	Renderable getRenderable2();
+
+	Model getModelA();
+	Model getModelB();
 }

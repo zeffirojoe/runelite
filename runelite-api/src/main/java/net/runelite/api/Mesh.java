@@ -24,11 +24,29 @@
  */
 package net.runelite.api;
 
+import java.util.List;
+import net.runelite.api.model.Triangle;
+import net.runelite.api.model.Vertex;
+
 /**
  * A {@link Model} or {@link ModelData}
  */
 public interface Mesh<T extends Mesh<T>>
 {
+	/**
+	 * Gets a list of all vertices of the model.
+	 *
+	 * @return the vertices
+	 */
+	List<Vertex> getVertices();
+
+	/**
+	 * Gets a list of all triangles of the model.
+	 *
+	 * @return the triangle
+	 */
+	List<Triangle> getTriangles();
+
 	int getVerticesCount();
 	int[] getVerticesX();
 	int[] getVerticesY();

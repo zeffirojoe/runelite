@@ -24,33 +24,38 @@
  */
 package net.runelite.api.kit;
 
-import net.runelite.api.PlayerComposition;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * Represents an equipment slot in a players composition.
  * <p>
- * These values are intended for use with {@link PlayerComposition} equipment
+ * These values are intended for use with {PlayerAppearance} equipment
  * slots. For obtaining information about equipment in the local players
- * equipment {@link net.runelite.api.ItemContainer}, use
- * {@link net.runelite.api.EquipmentInventorySlot}.
+ * equipment {net.runelite.api.ItemContainer}, use
+ * {net.runelite.api.EquipmentInventorySlot}.
  */
+@Getter
+@AllArgsConstructor
 public enum KitType
 {
-	HEAD,
-	CAPE,
-	AMULET,
-	WEAPON,
-	TORSO,
-	SHIELD,
-	ARMS,
-	LEGS,
-	HAIR,
-	HANDS,
-	BOOTS,
-	JAW;
+	HEAD("Head"),
+	CAPE("Cape"),
+	AMULET("Amulet"),
+	WEAPON("Weapon"),
+	TORSO("Torso"),
+	SHIELD("Shield"),
+	ARMS("Arms"),
+	LEGS("Legs"),
+	HAIR("Hair"),
+	HANDS("Hands"),
+	BOOTS("Boots"),
+	JAW("Jaw");
+
+	private final String name;
 
 	/**
-	 * Gets the raw equipment index for use in {@link PlayerComposition#getEquipmentIds()}.
+	 * Gets the raw equipment index for use in {@link net.runelite.api.PlayerComposition#getEquipmentIds()}.
 	 *
 	 * @return raw equipment index
 	 */

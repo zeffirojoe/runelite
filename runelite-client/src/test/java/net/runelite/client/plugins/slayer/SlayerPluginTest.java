@@ -903,7 +903,7 @@ public class SlayerPluginTest
 		slayerPlugin.onGameTick(new GameTick());
 
 		// Damage both npcs
-		Hitsplat hitsplat = new Hitsplat(HitsplatID.DAMAGE_ME, 1, 1);
+		Hitsplat hitsplat = new Hitsplat(Hitsplat.HitsplatType.DAMAGE_ME, 1, 1);
 		HitsplatApplied hitsplatApplied = new HitsplatApplied();
 		hitsplatApplied.setHitsplat(hitsplat);
 		hitsplatApplied.setActor(npc1);

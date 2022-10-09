@@ -24,6 +24,7 @@
  */
 package net.runelite.api;
 
+
 public interface FriendsChatManager extends NameableContainer<FriendsChatMember>
 {
 	/**

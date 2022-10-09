@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018 Abex
+ * Copyright (c) 2020, Lucas <https://github.com/Lucwousin>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,11 +35,23 @@ public interface IndexDataBase
 	boolean isOverlayOutdated();
 
 	/**
-	 * Get the child file ids for a given archive
-	 * @param archiveId
-	 * @return
+	 * Get the child file ids for a given group
 	 */
-	int[] getFileIds(int archiveId);
+	int[] getFileIds(int group);
+
+	/*
+	 * the methods bellow are usefull for reading byte data from the cache
+	 */
+
+	int getGroupCount();
+
+	byte[] getConfigData(int archiveId, int fileId);
+
+	int[][] getFileIds();
+
+	int getGroupFileCount(int groupId);
+
+	int[] getFileCounts();
 
 	byte[] loadData(int archiveID, int fileID);
 }

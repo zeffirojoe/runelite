@@ -27,15 +27,13 @@ package net.runelite.api;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Shape;
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.coords.WorldPoint;
 
 /**
  * Represents an object on a Tile
  */
-public interface TileObject
+public interface TileObject extends Locatable
 {
 	long getHash();
 
@@ -72,24 +70,8 @@ public interface TileObject
 	int getId();
 
 	/**
-	 * Get the world location for this object. For objects which are larger than 1 tile, this is the
-	 * center most tile, rounded to the south-west.
-	 * @return
-	 */
-	@Nonnull
-	WorldPoint getWorldLocation();
-
-	/**
-	 * Get the local location for this object. This point is the center point of the object.
-	 * @return
-	 */
-	@Nonnull
-	LocalPoint getLocalLocation();
-
-	/**
 	 * Calculates the position of the center of this tile on the canvas
 	 */
-	@Nullable
 	Point getCanvasLocation();
 
 	/**
@@ -97,13 +79,11 @@ public interface TileObject
 	 *
 	 * @param zOffset Vertical offset to apply before projection
 	 */
-	@Nullable
 	Point getCanvasLocation(int zOffset);
 
 	/**
 	 * Creates a polygon outlining the tile this object is on
 	 */
-	@Nullable
 	Polygon getCanvasTilePoly();
 
 	/**
@@ -113,7 +93,6 @@ public interface TileObject
 	 * @param zOffset Vertical offset to apply before projection
 	 * @return the canvas point to draw the text at
 	 */
-	@Nullable
 	Point getCanvasTextLocation(Graphics2D graphics, String text, int zOffset);
 
 	/**
@@ -122,7 +101,6 @@ public interface TileObject
 	 *
 	 * @return mini-map location on canvas
 	 */
-	@Nullable
 	Point getMinimapLocation();
 
 	/**
@@ -130,4 +108,14 @@ public interface TileObject
 	 */
 	@Nullable
 	Shape getClickbox();
+	
+	/**
+	 * Gets the name of the object
+	 */
+	String getName();
+
+	/**
+	 * Gets the menu actions of the object
+	 */
+	String[] getActions();
 }

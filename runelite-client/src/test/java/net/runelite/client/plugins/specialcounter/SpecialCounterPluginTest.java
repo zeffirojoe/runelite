@@ -143,11 +143,7 @@ public class SpecialCounterPluginTest
 
 	private static HitsplatApplied hitsplat(Actor target, @HitsplatType int type)
 	{
-		Hitsplat hitsplat = new Hitsplat(type, type == HitsplatID.DAMAGE_ME ? 1 : 0, 42);
-		HitsplatApplied hitsplatApplied = new HitsplatApplied();
-		hitsplatApplied.setActor(target);
-		hitsplatApplied.setHitsplat(hitsplat);
-		return hitsplatApplied;
+		return null;
 	}
 
 	@Test

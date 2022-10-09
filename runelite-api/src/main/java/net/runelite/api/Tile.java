@@ -25,13 +25,11 @@
 package net.runelite.api;
 
 import java.util.List;
-import net.runelite.api.coords.LocalPoint;
-import net.runelite.api.coords.WorldPoint;
 
 /**
  * Represents a tile in the game.
  */
-public interface Tile
+public interface Tile extends Locatable
 {
 	/**
 	 * Gets the decoration on the tile.
@@ -39,6 +37,13 @@ public interface Tile
 	 * @return the tile decoration
 	 */
 	DecorativeObject getDecorativeObject();
+
+	/**
+	 * Sets the object on the decorative layer of the tile.
+	 *
+	 * @param decorativeObject the decorative object
+	 */
+	void setDecorativeObject(DecorativeObject decorativeObject);
 
 	/**
 	 * Gets all game objects on the tile.
@@ -76,6 +81,13 @@ public interface Tile
 	WallObject getWallObject();
 
 	/**
+	 * Sets the object on the wall layer of the tile.
+	 *
+	 * @param wallObject the ground object
+	 */
+	void setWallObject(WallObject wallObject);
+
+	/**
 	 * Gets the scene paint of the tile.
 	 *
 	 * @return the paint
@@ -90,25 +102,11 @@ public interface Tile
 	SceneTileModel getSceneTileModel();
 
 	/**
-	 * Gets the location coordinate of the tile in the world.
-	 *
-	 * @return the world location
-	 */
-	WorldPoint getWorldLocation();
-
-	/**
 	 * Gets the location coordinate of the tile in scene coords
 	 *
 	 * @return the scene location
 	 */
 	Point getSceneLocation();
-
-	/**
-	 * Gets the local coordinate of the tile.
-	 *
-	 * @return the local location
-	 */
-	LocalPoint getLocalLocation();
 
 	/**
 	 * Gets the plane that this tile is on.
@@ -125,12 +123,30 @@ public interface Tile
 	int getRenderLevel();
 
 	/**
+	 * Get the minimum plane this tile will be rendered on.
+	 * Example: This tile is on plane 1. The local player is on plane 0, and hide roofs option is turned on.
+	 * If minPlane is 0, this tile will not be rendered.
+	 * If minPlane is 1, this tile will be rendered.
+	 *
+	 * @return the minPlane
+	 */
+	int getPhysicalLevel();
+
+	/**
 	 * Computes and returns whether this tile has line of sight to another.
 	 *
 	 * @param other the other tile
 	 * @return true if there is no sight obstruction, false otherwise
 	 */
 	boolean hasLineOfSightTo(Tile other);
+
+	/**
+	 * Computes and returns the path from this tile to another.
+	 *
+	 * @param other the other tile
+	 * @return the checkpoint tiles of the path, or null if no path found
+	 */
+	List<Tile> pathTo(Tile other);
 
 	/**
 	 * Get all the ground items for this tile
@@ -141,8 +157,6 @@ public interface Tile
 
 	/**
 	 * Return the tile under this one, if this tile is a bridge
-	 *
-	 * @return
 	 */
 	Tile getBridge();
 }
