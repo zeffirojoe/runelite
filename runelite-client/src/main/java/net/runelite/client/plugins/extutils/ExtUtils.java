@@ -15,8 +15,8 @@ import net.runelite.api.widgets.WidgetItem;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import org.jetbrains.annotations.NotNull;
-
 import org.jetbrains.annotations.Nullable;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
@@ -221,6 +221,18 @@ public class ExtUtils extends Plugin
 		return findNearestGroundObject(ids);
 	}
 
+	public boolean checkInvFull()
+	{
+		final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
+
+		if (itemContainer == null)
+			return false;
+
+		final Item[] items = itemContainer.getItems();
+
+		return items.length >= 28;
+	}
+
 	public List<WidgetItem> getItems(int... itemIDs)
 	{
 		assert client.isClientThread();
@@ -319,28 +331,61 @@ public class ExtUtils extends Plugin
 	Series of Functions that click specific things in the world.
 	 */
 
-	//Clicks the first item that matches the ID in user INV
-	private void clickInvItem(int[] ITEM_IDS)
+	//Clicks all items that matche the ID in user INV
+	public int clickAllInvItems(int[] ITEM_IDS)
 	{
 		assert client.isClientThread();
 
-		List<WidgetItem> items = getItems(ITEM_IDS);
-		if (items == null)
+		Widget invWidget = client.getWidget(WidgetInfo.INVENTORY.getPackedId());
+
+		Widget[] childrenWidgets = invWidget.getChildren();
+
+		int timer = 142;
+
+		for(Widget child : childrenWidgets){
+			for(int itemId : ITEM_IDS){
+				if(itemId == child.getItemId()){
+					int finalTimer = timer;
+					(new Thread(() -> {
+						try
+						{
+							Thread.sleep(getRandomIntBetweenRange(finalTimer, finalTimer +278));
+						}
+						catch (InterruptedException e)
+						{
+							e.printStackTrace();
+						}
+						click(child.getBounds());
+					})).start();
+					timer += 420;
+				}
+			}
+		}
+		return timer;
+	}
+
+	//Clicks the closest npc after x time.
+	public void clickNPC(int[] NPC_IDS, int time)
+	{
+		assert client.isClientThread();
+
+		NPC pickpocket_npc = findNearestNPC(NPC_IDS); //Change this to Ardy Knights
+		if (pickpocket_npc == null)
 			return;
 
-		WidgetItem coin_pouch = items.get(0);
-		if (coin_pouch == null)
+		Shape npc_shape = pickpocket_npc.getConvexHull();
+		if (npc_shape == null)
 			return;
 
-		Rectangle coin_pouch_rect = coin_pouch.getCanvasBounds();
-		if (coin_pouch_rect == null)
+		Rectangle npc_rect = npc_shape.getBounds();
+		if (npc_rect == null)
 			return;
 
 		(new Thread(() -> {
 			try
 			{
-				Thread.sleep(getRandomIntBetweenRange(142, 420));
-				click(coin_pouch_rect);
+				Thread.sleep(getRandomIntBetweenRange(time, time+278));
+				click(npc_rect);
 			}
 			catch (InterruptedException e)
 			{
@@ -350,7 +395,7 @@ public class ExtUtils extends Plugin
 	}
 
 	//Clicks the closest IP that matches the id's given
-	private void clickNPC(int[] NPC_IDS)
+	public void clickNPC(int[] NPC_IDS)
 	{
 		assert client.isClientThread();
 
@@ -401,6 +446,70 @@ public class ExtUtils extends Plugin
 			{
 				Thread.sleep(getRandomIntBetweenRange(142, 523));
 				click(npc_rect);
+			}
+			catch (InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+		})).start();
+	}
+
+	@Nullable
+	public boolean findAndClickNearestObj(int[] object_ids)
+	{
+		if (object_ids.length < 1)
+		{
+			return false;
+		}
+
+		Player player = client.getLocalPlayer();
+		if (client.getLocalPlayer() == null)
+		{
+			return false;
+		}
+
+		int smallest_dist = Integer.MAX_VALUE;
+		TileObject object_to_click = null;
+		for (int id : object_ids) {
+			TileObject tmp = findNearestObject(id);
+			if (tmp == null)
+			{
+				continue;
+			}
+
+			int dist = player.getLocalLocation().distanceTo(tmp.getLocalLocation());
+			if (dist < smallest_dist)
+			{
+				object_to_click = tmp;
+				smallest_dist = dist;
+			}
+		}
+
+		if(object_to_click == null || smallest_dist > 4000 )
+			return false;
+
+		clickTileObject(object_to_click);
+
+		return true;
+	}
+	public void clickTileObject(TileObject TILE_OBJ)
+	{
+		assert client.isClientThread();
+
+		Shape tile_obj_shape = TILE_OBJ.getClickbox();
+		if (tile_obj_shape == null)
+			return;
+
+		Rectangle tile_obj_rect = tile_obj_shape.getBounds();
+		if (tile_obj_rect == null)
+			return;
+
+		(new Thread(() ->
+		{
+			try
+			{
+				Thread.sleep(getRandomIntBetweenRange(142, 523));
+				click(tile_obj_rect);
 			}
 			catch (InterruptedException e)
 			{

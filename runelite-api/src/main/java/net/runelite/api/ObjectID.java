@@ -22898,7 +22898,6 @@ public final class ObjectID
 	public static final int STRANGE_TABLET_46238 = 46238;
 	public static final int STRANGE_TABLET_46239 = 46239;
 	public static final int NOTICEBOARD_46240 = 46240;
-	public static final int SACRIFICIAL_BOAT = 46241;
 	public static final int SACRIFICIAL_BOAT_46242 = 46242;
 	public static final int COMBAT_RING_46243 = 46243;
 	public static final int COMBAT_RING_46244 = 46244;
