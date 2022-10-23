@@ -378,8 +378,8 @@ public class JoeMining extends Plugin
 
 		final Hitsplat hitsplat = event.getHitsplat();
 
-		if (hitsplat.getHitsplatType() == Hitsplat.HitsplatType.DAMAGE_ME
-				|| hitsplat.getHitsplatType() == Hitsplat.HitsplatType.BLOCK_ME)
+		if (hitsplat.getHitsplatType() == HitsplatID.DAMAGE_ME
+				|| hitsplat.getHitsplatType() == HitsplatID.BLOCK_ME)
 		{
 			lastCombatCountdown = HIGHEST_MONSTER_ATTACK_SPEED;
 		}
